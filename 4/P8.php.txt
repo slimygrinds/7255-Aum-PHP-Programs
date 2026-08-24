@@ -1,0 +1,15 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "college");
+
+$sql = "SELECT * FROM students LIMIT 5";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    echo "ID: " . $row["id"] . "<br>";
+    echo "Name: " . $row["name"] . "<br>";
+    echo "Email: " . $row["email"] . "<br>";
+    echo "Age: " . $row["age"] . "<br><hr>";
+}
+
+$conn->close();
+?>

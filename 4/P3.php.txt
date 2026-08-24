@@ -1,0 +1,40 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "college");
+
+$name = "Rahul";
+$email = "rahul@example.com";
+$age = 21;
+
+$sql = "INSERT INTO students (name, email, age)
+        VALUES ('$name', '$email', $age)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Data inserted successfully!";
+} else {
+    echo "Error: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+<?php
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=college", "root", "");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "INSERT INTO students (name, email, age)
+            VALUES (:name, :email, :age)";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->execute([
+        ":name" => "Rahul",
+        ":email" => "rahul@example.com",
+        ":age" => 21
+    ]);
+
+    echo "Data inserted successfully!";
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
