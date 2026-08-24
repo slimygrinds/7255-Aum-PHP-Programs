@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+body {
+    height: 1500px;
+}
+
+#top {
+    margin-top: 1200px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="top">My Web Page</h1>
+
+<p>Scroll down and click the button.</p>
+
+<button id="topButton">Go To Top</button>
+
+<script>
+$(document).ready(function() {
+
+    $("#topButton").click(function() {
+
+        $("html, body").animate({
+            scrollTop: 0
+        }, 1000);
+
+    });
+
+});
+</script>
+
+</body>
+</html>

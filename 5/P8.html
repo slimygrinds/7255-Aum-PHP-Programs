@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+p, h2, button {
+    padding: 10px;
+    margin: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>jQuery Selectors</h2>
+
+<p>First paragraph</p>
+<p>Second paragraph</p>
+
+<button>Click Me</button>
+
+<script>
+$(document).ready(function() {
+
+    $("p").css("background-color", "red");
+
+    $("h2").css("background-color", "red");
+
+    $("button").css("background-color", "red");
+
+});
+</script>
+
+</body>
+</html>

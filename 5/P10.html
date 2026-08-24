@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AJAX Navigation</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+nav a {
+    margin: 10px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>My Website</h2>
+
+<nav>
+    <a href="#" data-page="home">Home</a>
+    <a href="#" data-page="about">About</a>
+    <a href="#" data-page="products">Products</a>
+    <a href="#" data-page="contact">Contact</a>
+</nav>
+
+<hr>
+
+<div id="content">
+    Select a menu item.
+</div>
+
+<script>
+$(document).ready(function() {
+
+    $("nav a").click(function(e) {
+
+        e.preventDefault();
+
+        var page = $(this).data("page");
+
+        $.ajax({
+            url: "content.php",
+            type: "GET",
+            data: {
+                page: page
+            },
+
+            success: function(response) {
+                $("#content").html(response);
+            },
+
+            error: function() {
+                $("#content").html(
+                    "Error loading content."
+                );
+            }
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>

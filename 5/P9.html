@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>Search Suggestions</h2>
+
+<input type="text"
+       id="search"
+       placeholder="Search..."
+       autocomplete="off">
+
+<div id="suggestions"></div>
+
+<script>
+$(document).ready(function() {
+
+    $("#search").keyup(function() {
+
+        var keyword = $(this).val();
+
+        if (keyword == "") {
+            $("#suggestions").html("");
+            return;
+        }
+
+        $.ajax({
+            url: "suggestions.php",
+            type: "GET",
+            data: {
+                q: keyword
+            },
+            success: function(response) {
+                $("#suggestions").html(response);
+            }
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>
